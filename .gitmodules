@@ -1,0 +1,6 @@
+[submodule "0_introduction"]
+	path = 0_introduction
+	url = git@github.com:zonca/overleaf_largedoc_intro.git
+[submodule "1_first_section"]
+	path = 1_first_section
+	url = git@github.com:zonca/overleaf_largedoc_section_1
