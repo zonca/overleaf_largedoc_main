@@ -1,0 +1,38 @@
+name: Update all sections
+
+# Just run manually
+on:
+  workflow_dispatch:
+
+jobs:
+  update_sections:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Update submodules
+        run: bash update_sections.sh
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update all sections to their last commit on master
+
+          # Optional options appended to `git-commit`
+          # See https://git-scm.com/docs/git-commit for a list of available options
+          commit_options: '--no-verify --signoff'
+
+          # Optional local file path to the repository
+          # Defaults to the root of the repository
+          repository: .
+
+          # Optional options appended to `git-push`
+          # See git-push documentation for details: https://git-scm.com/docs/git-push#_options
+          push_options: '--force'
+
+          # Optional: Disable dirty check and always try to create a commit and push
+          skip_dirty_check: true
+
+          # Optional: Skip internal call to `git fetch`
+          skip_fetch: true
