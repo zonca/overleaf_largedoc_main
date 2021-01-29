@@ -4,6 +4,11 @@ name: Update all sections
 on:
   workflow_dispatch:
 
+  schedule:
+    - cron: "0 15 * * *" #runs at 15:00 UTC (7am PT) everyday
+
+
+
 jobs:
   update_sections:
     runs-on: ubuntu-latest
